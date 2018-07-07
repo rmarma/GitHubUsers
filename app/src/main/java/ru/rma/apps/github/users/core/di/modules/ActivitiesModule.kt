@@ -1,6 +1,5 @@
 package ru.rma.apps.github.users.core.di.modules
 
-import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule

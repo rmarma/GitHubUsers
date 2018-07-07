@@ -2,7 +2,7 @@ package ru.rma.apps.github.users.main.ui.views
 
 import android.os.Bundle
 import ru.rma.apps.github.users.R
-import ru.rma.apps.github.users.core.ui.BaseActivity
+import ru.rma.apps.github.users.core.ui.views.BaseActivity
 
 class MainActivity : BaseActivity(), MainView {
 

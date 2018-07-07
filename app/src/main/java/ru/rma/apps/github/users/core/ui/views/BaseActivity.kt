@@ -1,4 +1,4 @@
-package ru.rma.apps.github.users.core.ui
+package ru.rma.apps.github.users.core.ui.views
 
 import dagger.android.support.DaggerAppCompatActivity
 

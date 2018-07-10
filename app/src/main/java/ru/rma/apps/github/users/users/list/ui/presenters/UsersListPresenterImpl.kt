@@ -1,11 +1,14 @@
 package ru.rma.apps.github.users.users.list.ui.presenters
 
 import io.reactivex.disposables.CompositeDisposable
+import ru.rma.apps.github.users.users.list.business.interactors.UsersListInteractor
 import ru.rma.apps.github.users.users.list.ui.views.UsersListView
 import ru.rma.apps.github.users.users.list.ui.views.UsersListViewEmpty
 import javax.inject.Inject
 
-class UsersListPresenterImpl @Inject constructor() : UsersListPresenter {
+class UsersListPresenterImpl @Inject constructor(
+        private val mInteractor: UsersListInteractor
+) : UsersListPresenter {
 
     private val mViewEmpty = UsersListViewEmpty()
 

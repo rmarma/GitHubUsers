@@ -11,9 +11,10 @@ import ru.rma.apps.github.users.core.data.net.URL_GITHUB
 import javax.inject.Singleton
 
 @Module(includes = [AndroidSupportInjectionModule::class,
+    SchedulersModule::class,
     ActivitiesModule::class,
     FragmentsModule::class])
-class AppModule {
+abstract class AppModule {
 
     @Provides
     @Singleton
@@ -27,6 +28,7 @@ class AppModule {
     @Singleton
     fun api(client: OkHttpClient) = Retrofit.Builder()
             .baseUrl(URL_GITHUB)
+            .client(client)
             .build()
             .create(GitHubApi::class.java)
 }

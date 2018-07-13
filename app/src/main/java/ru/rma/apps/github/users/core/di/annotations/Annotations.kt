@@ -6,3 +6,7 @@ import javax.inject.Qualifier
 annotation class Io
 @Qualifier
 annotation class Ui
+@Qualifier
+annotation class Local
+@Qualifier
+annotation class Remote

@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ru.rma.apps.github.users.R
+import ru.rma.apps.github.users.core.ui.models.UserModel
 import ru.rma.apps.github.users.core.ui.views.BaseFragment
+import ru.rma.apps.github.users.users.list.ui.adapters.UsersAdapter
 import ru.rma.apps.github.users.users.list.ui.presenters.UsersListPresenter
 import javax.inject.Inject
 
@@ -13,6 +15,8 @@ class UsersListFragment : BaseFragment(), UsersListView {
 
     @Inject
     lateinit var mPresenter: UsersListPresenter
+    @Inject
+    lateinit var mAdapter: UsersAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -43,5 +47,10 @@ class UsersListFragment : BaseFragment(), UsersListView {
         super.onDestroy()
 
         mPresenter.destroy()
+    }
+
+
+    override fun showUsers(list: List<UserModel>) {
+        mAdapter.setUsers(list)
     }
 }

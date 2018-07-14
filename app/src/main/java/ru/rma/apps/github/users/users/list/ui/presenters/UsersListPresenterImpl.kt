@@ -23,6 +23,13 @@ class UsersListPresenterImpl @Inject constructor(
 
     override fun attachView(view: UsersListView) {
         mView = view
+
+        mCompositeDisposable.add(mInteractor.users()
+                .subscribe({
+                    mView.showUsers(it)
+                }, {
+                    // TODO("Handle error")
+                }))
     }
 
     override fun detachView() {

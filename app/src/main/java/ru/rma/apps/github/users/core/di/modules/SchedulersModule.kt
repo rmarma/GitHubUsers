@@ -10,15 +10,15 @@ import ru.rma.apps.github.users.core.di.annotations.Ui
 import javax.inject.Singleton
 
 @Module
-abstract class SchedulersModule {
+class SchedulersModule {
 
+    @Ui
     @Provides
     @Singleton
-    @Ui
     fun uiScheduler(): Scheduler = AndroidSchedulers.mainThread()
 
+    @Io
     @Provides
     @Singleton
-    @Io
     fun ioScheduler(): Scheduler = Schedulers.io()
 }

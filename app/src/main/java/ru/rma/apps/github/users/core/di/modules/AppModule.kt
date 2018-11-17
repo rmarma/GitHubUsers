@@ -1,5 +1,6 @@
 package ru.rma.apps.github.users.core.di.modules
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.android.support.AndroidSupportInjectionModule
@@ -19,31 +20,31 @@ import javax.inject.Singleton
     SchedulersModule::class,
     ActivitiesModule::class,
     FragmentsModule::class])
-abstract class AppModule {
+class AppModule {
 
     @Provides
     @Singleton
-    fun provideContext(app: App) = app.applicationContext
+    fun provideContext(app: App): Context = app.applicationContext
 
     @Provides
     @Singleton
-    fun provideHttpClient() = OkHttpClient.Builder().build()
+    fun provideHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
     @Provides
     @Singleton
-    fun provideApi(client: OkHttpClient) = Retrofit.Builder()
+    fun provideApi(client: OkHttpClient): GitHubApi = Retrofit.Builder()
             .baseUrl(URL_GITHUB)
             .client(client)
             .build()
             .create(GitHubApi::class.java)
 
+    @Remote
     @Provides
     @Singleton
-    @Remote
     fun provideGitHubRepositoryRemote(repository: GitHubRepositoryRemote): GitHubRepository = repository
 
+    @Local
     @Provides
     @Singleton
-    @Local
     fun provideGitHubRepositoryLocal(repository: GitHubRepositoryLocal): GitHubRepository = repository
 }
